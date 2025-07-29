@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quorapost-rest-api.onrender.com/sitemap.xml
