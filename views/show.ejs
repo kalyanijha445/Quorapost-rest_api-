@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post in Details</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2f3542;
+            margin-bottom: 30px;
+        }
+
+        p {
+            text-align: center;
+            color: #57606f;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .post {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .user {
+            color: #007bff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            font-size: 1.1rem;
+            color: #2f3542;
+            line-height: 1.6;
+            white-space: pre-line; /* allows line breaks from textarea */
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 25px auto 0;
+            text-align: center;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Here is your post in detail:</h2>
+    <p>Post ID: <%= post.id %></p>
+    
+    <div class="post">
+        <h3 class="user">@<%= post.username %></h3>
+        <div class="content"><%= post.content %></div>
+    </div>
+
+    <div class="center">
+        <a href="/posts" class="back-btn">Back to All Posts</a>
+    </div>
+
+</body>
+</html>

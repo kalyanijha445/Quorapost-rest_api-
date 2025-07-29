@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f2f6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2f3542;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1rem;
+            color: #57606f;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ced6e0;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: inherit;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0c70d4;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Your Post</h2>
+
+    <div class="container">
+        <p><strong>Post ID:</strong> <%= post.id %></p>
+        <p><strong>Username:</strong> @<%= post.username %></p>
+
+        <form method="POST" action="/posts/<%= post.id %>?_method=PATCH">
+            <label for="content"><strong>Update Content:</strong></label>
+            <textarea name="content" id="content" rows="6" required><%= post.content %></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

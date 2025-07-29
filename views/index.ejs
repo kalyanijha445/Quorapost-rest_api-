@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Posts - Quora Clone</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  color: maroon;
+  font-size: 2rem;
+}
+
+/* Post Card */
+.post-card {
+  background: #fffaf0;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+}
+
+.post-header .user {
+  font-weight: bold;
+  font-style: italic;
+  color: #333;
+}
+
+.content {
+  margin: 1rem 0;
+  color: #444;
+}
+
+/* Buttons */
+.btn {
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  border: none;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
+
+.create-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.create-btn:hover {
+  background-color: #45a049;
+}
+
+.edit-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0b7dda;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #da190b;
+}
+
+/* Inline form */
+.inline-form {
+  display: inline;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Quora Posts</h1>
+      <a href="/posts/new" class="btn create-btn">+ Create New Post</a>
+    </header>
+
+    <% for(post of posts){ %>
+      <div class="post-card">
+        <div class="post-header">
+          <span class="user">@<%= post.username %></span>
+        </div>
+        <p class="content"><%= post.content %></p>
+        <div class="actions">
+          <a href="/posts/<%= post.id %>" class="btn">View</a>
+          <a href="/posts/<%= post.id %>/edit" class="btn edit-btn">Edit</a>
+          <form method="POST" action="/posts/<%= post.id %>?_method=DELETE" class="inline-form">
+            <button class="btn delete-btn" onclick="return confirm('Are you sure?')">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
